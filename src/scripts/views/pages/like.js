@@ -21,10 +21,8 @@ const Like = {
         You dont have any Favorite Cafe or Restaurant
       `;
     }
-    // console.log(movies);
     movies.forEach((movie) => {
       moviesContainer.innerHTML += createMovieItemTemplate(movie);
-      // console.log(movie);
     });
   },
 };
