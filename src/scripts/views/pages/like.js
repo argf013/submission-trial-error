@@ -18,7 +18,7 @@ const Like = {
     const moviesContainer = document.querySelector('#movies');
     if (movies.length === 0) {
       moviesContainer.innerHTML = `
-        You don't have any Favorite Cafe or Restaurant
+        You dont have any Favorite Cafe or Restaurant
       `;
     }
     // console.log(movies);

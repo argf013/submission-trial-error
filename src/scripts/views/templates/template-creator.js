@@ -57,7 +57,7 @@ const createMovieItemTemplate = (movie) => `
       </div>
     </div>
     <div class="movie-item__content">
-      <h3>${movie.name}</h3>
+      <h3 class="movie__title">${movie.name}</h3>
       <p>${movie.description}</p>
     </div>
   </div>
