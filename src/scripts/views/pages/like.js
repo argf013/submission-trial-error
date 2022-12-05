@@ -16,10 +16,15 @@ const Like = {
   async afterRender() {
     const movies = await FavoriteMovieIdb.getAllMovies();
     const moviesContainer = document.querySelector('#movies');
-    console.log(movies);
+    if (movies.length === 0) {
+      moviesContainer.innerHTML = `
+        You don't have any Favorite Cafe or Restaurant
+      `;
+    }
+    // console.log(movies);
     movies.forEach((movie) => {
       moviesContainer.innerHTML += createMovieItemTemplate(movie);
-      console.log(movie);
+      // console.log(movie);
     });
   },
 };
