@@ -8,12 +8,12 @@ Before(({ I }) => {
 
 const firstCondition = "You dont have any Favorite Cafe or Restaurant";
 
-Scenario('showing empty liked movies', ({ I }) => {
+Scenario('showing empty liked resto', ({ I }) => {
   I.seeElement('#movies');
   I.see(firstCondition, '#movies');
 });
 
-Scenario('liking one movie', async ({ I }) => {
+Scenario('liking one resto', async ({ I }) => {
   I.see(firstCondition, '#movies');
 
   I.amOnPage('/'); 
@@ -33,7 +33,7 @@ Scenario('liking one movie', async ({ I }) => {
   assert.strictEqual(firstFilmTitle, likedFilmTitle);
 });
 
-Scenario('unliking one movie', async ({ I }) => {
+Scenario('unliking one resto', async ({ I }) => {
   I.see(firstCondition, '#movies');
 
   I.amOnPage('/'); 
