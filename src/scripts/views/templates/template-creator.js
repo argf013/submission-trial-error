@@ -2,7 +2,7 @@ import CONFIG from '../../globals/config';
 
 const createMovieDetailTemplate = (movie) => `
 <h2 class="movie__title">${movie.restaurant.name}</h2>
-<img class="lazyload movie__poster" src="${CONFIG.BASE_IMAGE_URL + movie.restaurant.pictureId}" alt="${movie.restaurant.name}" />
+<img class="lazyload movie__poster" data-src="${CONFIG.BASE_IMAGE_URL + movie.restaurant.pictureId}" alt="${movie.restaurant.name}" />
 <div class="movie__info">
   <h3>Information</h3>
   <div class="restaurant__description"> 
@@ -51,7 +51,7 @@ const createMovieItemTemplate = (movie) => `
   <div class="movie-item">
     <div class="movie-item__header">
     <a href="/#/detail/${movie.id}"><img class="lazyload movie-item__header__poster" alt="${movie.name}"
-           src="${CONFIG.BASE_IMAGE_URL + movie.pictureId}"></a>
+           data-src="${CONFIG.BASE_IMAGE_URL + movie.pictureId}"></a>
       <div class="movie-item__header__rating">
         <p>⭐️<span class="movie-item__header__rating__score">${movie.rating}</span></p>
       </div>

@@ -5,7 +5,7 @@ const addLikeButtonContainer = () => {
   document.body.innerHTML = '<div id="likeButtonContainer"></div>';
 };
 
-describe('Unliking A Movie', () => {
+describe('Unliking A Resto', () => {
   beforeEach(async () => {
     addLikeButtonContainer();
     await FavoriteMovieIdb.putMovie({ id: 1 });
@@ -15,7 +15,7 @@ describe('Unliking A Movie', () => {
     await FavoriteMovieIdb.deleteMovie(1);
   });
 
-  it('should display unlike widget when the movie has been liked', async () => {
+  it('should display unlike widget when the resto has been liked', async () => {
     await LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
       movie: {
@@ -23,11 +23,11 @@ describe('Unliking A Movie', () => {
       },
     });
 
-    expect(document.querySelector('[aria-label="unlike this movie"]'))
+    expect(document.querySelector('[aria-label="unlike this resto"]'))
       .toBeTruthy();
   });
 
-  it('should not display like widget when the movie has been liked', async () => {
+  it('should not display like widget when the resto has been liked', async () => {
     await LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
       movie: {
@@ -35,11 +35,11 @@ describe('Unliking A Movie', () => {
       },
     });
 
-    expect(document.querySelector('[aria-label="like this movie"]'))
+    expect(document.querySelector('[aria-label="like this resto"]'))
       .toBeFalsy();
   });
 
-  it('should be able to remove liked movie from the list', async () => {
+  it('should be able to remove liked resto from the list', async () => {
     await LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
       movie: {
@@ -47,12 +47,12 @@ describe('Unliking A Movie', () => {
       },
     });
 
-    document.querySelector('[aria-label="unlike this movie"]').dispatchEvent(new Event('click'));
+    document.querySelector('[aria-label="unlike this resto"]').dispatchEvent(new Event('click'));
 
     expect(await FavoriteMovieIdb.getAllMovies()).toEqual([]);
   });
 
-  it('should not throw error if the unliked movie is not in the list', async () => {
+  it('should not throw error if the unliked resto is not in the list', async () => {
     await LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),
       movie: {
@@ -64,7 +64,7 @@ describe('Unliking A Movie', () => {
     await FavoriteMovieIdb.deleteMovie(1);
 
     // kemudian, simulasikan pengguna menekan widget batal menyukai film
-    document.querySelector('[aria-label="unlike this movie"]').dispatchEvent(new Event('click'));
+    document.querySelector('[aria-label="unlike this resto"]').dispatchEvent(new Event('click'));
 
     expect(await FavoriteMovieIdb.getAllMovies()).toEqual([]);
   });
