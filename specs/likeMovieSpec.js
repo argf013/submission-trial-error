@@ -41,9 +41,9 @@ describe('Liking A Resto', () => {
     });
 
     document.querySelector('#likeButton').dispatchEvent(new Event('click'));
-    const resto = await FavoriteMovieIdb.getMovie(1);
+    const movie = await FavoriteMovieIdb.getMovie(1);
 
-    expect(resto).toEqual({ id: 1 });
+    expect(movie).toEqual({ id: 1 });
 
     FavoriteMovieIdb.deleteMovie(1);
   });
@@ -56,13 +56,17 @@ describe('Liking A Resto', () => {
       },
     });
 
+    // Tambahkan film dengan ID 1 ke daftar film yang disukai
     await FavoriteMovieIdb.putMovie({ id: 1 });
+    // Simulasikan pengguna menekan tombol suka film
     document.querySelector('#likeButton').dispatchEvent(new Event('click'));
+    // tidak ada film yang ganda
     expect(await FavoriteMovieIdb.getAllMovies()).toEqual([{ id: 1 }]);
 
     FavoriteMovieIdb.deleteMovie(1);
   });
 
+  // menggunakan metode xit, bukan it
   it('should not add a resto when it has no id', async () => {
     await LikeButtonInitiator.init({
       likeButtonContainer: document.querySelector('#likeButtonContainer'),

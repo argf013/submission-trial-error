@@ -1,12 +1,12 @@
 const assert = require('assert');
 
-Feature('Liking Movies');
+Feature('Liking Resto');
 
 Before(({ I }) => {
   I.amOnPage('/#/like');
 });
 
-const firstCondition = "You dont have any Favorite Cafe or Restaurant";
+const firstCondition = 'You dont have any Favorite Cafe or Restaurant';
 
 Scenario('showing empty liked resto', ({ I }) => {
   I.seeElement('#movies');
@@ -16,10 +16,10 @@ Scenario('showing empty liked resto', ({ I }) => {
 Scenario('liking one resto', async ({ I }) => {
   I.see(firstCondition, '#movies');
 
-  I.amOnPage('/'); 
-  pause() // jika tidak menggunakan pause error
+  I.amOnPage('/');
+  // jika tidak menggunakan pause error
   I.seeElement('.movie-item');
-  const firstFilm = locate('.movie-item__header a').first(); 
+  const firstFilm = locate('.movie-item__header a').first();
   const firstFilmTitle = await I.grabTextFrom('.movie__title');
   I.click(firstFilm);
 
@@ -36,12 +36,12 @@ Scenario('liking one resto', async ({ I }) => {
 Scenario('unliking one resto', async ({ I }) => {
   I.see(firstCondition, '#movies');
 
-  I.amOnPage('/'); 
+  I.amOnPage('/');
   I.seeElement('.movie-item');
-  const firstFilm1 = locate('.movie-item__header a').first(); 
+  const firstFilm1 = locate('.movie-item__header a').first();
   const firstFilmTitle1 = await I.grabTextFrom('.movie__title');
   I.click(firstFilm1);
-  
+
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
@@ -58,6 +58,4 @@ Scenario('unliking one resto', async ({ I }) => {
   I.see(firstCondition, '#movies');
   const likedEmpty = await I.grabTextFrom('#movies');
   assert.strictEqual(likedEmpty, firstCondition);
-
-
 });
