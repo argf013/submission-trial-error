@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 /* eslint-disable no-prototype-builtins */
 import { openDB } from 'idb';
 import CONFIG from '../globals/config';
@@ -26,6 +25,7 @@ const FavoriteMovieIdb = {
     if (!movie.hasOwnProperty('id')) {
       return;
     }
+    // eslint-disable-next-line consistent-return
     return (await dbPromise).put(OBJECT_STORE_NAME, movie);
   },
   async deleteMovie(id) {
