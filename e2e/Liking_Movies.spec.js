@@ -1,4 +1,6 @@
+/* eslint-disable codeceptjs/no-pause-in-scenario */
 const assert = require('assert');
+const { pause } = require('codeceptjs');
 
 Feature('Liking Resto');
 
@@ -9,11 +11,13 @@ Before(({ I }) => {
 const firstCondition = 'You dont have any Favorite Cafe or Restaurant';
 
 Scenario('showing empty liked resto', ({ I }) => {
+  pause();
   I.seeElement('#movies');
   I.see(firstCondition, '#movies');
 });
 
 Scenario('liking one resto', async ({ I }) => {
+  pause();
   I.see(firstCondition, '#movies');
 
   I.amOnPage('/');

@@ -3,7 +3,7 @@ const sharp = require('sharp');
 const fs = require('fs');
 const path = require('path');
 
-const target = path.resolve(__dirname, 'src/public/images/heros/hero-image_4.jpg');
+const target = path.resolve(__dirname, 'src/public/images/heros/');
 const destination = path.resolve(__dirname, 'dist/images');
 
 if (!fs.existsSync(destination)) {
@@ -27,10 +27,9 @@ fs.readdirSync(target)
         __dirname,
         `${destination}/${image.split('.').slice(0, -1).join('.')}-small.jpg`,
       ));
+    sharp(`${target}/${image}`)
+      .resize(1800)
+      .toFile(
+        path.resolve(__dirname, `${destination}/${image.split('.').slice(0, -1).join('.')}-xl.jpg`),
+      );
   });
-
-sharp(`${target}/${image}`)
-  .resize(1800)
-  .toFile(
-    path.resolve(__dirname, `${destination}/${image.split('.').slice(0, -1).join('.')}-xl.jpg`),
-  );
